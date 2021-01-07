@@ -602,7 +602,7 @@ RCT_EXPORT_METHOD(openCropper:(NSDictionary *)options
                                         imageResult.image = imgT;
                                     } else {
                                         imageResult = [self.compression compressImage:imgT withOptions:self.options];
-                                        imageResult.data = [self.exifService copyImagePropertiesFrom:imgT to:imageResult.data];
+                                        imageResult.data = [self.exifService copyImagePropertiesFrom:imageData to:imageResult.data];
                                     }
                                     
                                     NSString *filePath = @"";
