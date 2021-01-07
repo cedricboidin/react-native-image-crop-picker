@@ -41,6 +41,7 @@
 #import "UIImage+Resize.h"
 #import "UIImage+Extension.h"
 #import "Compression.h"
+#import "ExifService.h"
 #import <math.h>
 
 @interface ImageCropPicker : NSObject<
@@ -59,6 +60,7 @@ typedef enum selectionMode {
 @property (nonatomic, strong) NSMutableDictionary *croppingFile;
 @property (nonatomic, strong) NSDictionary *defaultOptions;
 @property (nonatomic, strong) Compression *compression;
+@property (nonatomic, strong) ExifService *exifService;
 @property (nonatomic, retain) NSMutableDictionary *options;
 @property (nonatomic, strong) RCTPromiseResolveBlock resolve;
 @property (nonatomic, strong) RCTPromiseRejectBlock reject;

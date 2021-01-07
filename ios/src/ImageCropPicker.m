@@ -75,6 +75,7 @@ RCT_EXPORT_MODULE();
             @"cropperRotateButtonsHidden": @NO
         };
         self.compression = [[Compression alloc] init];
+        self.exifService = [[ExifService alloc] init];
     }
     
     return self;
@@ -604,7 +605,8 @@ RCT_EXPORT_METHOD(openCropper:(NSDictionary *)options
                                         imageResult.mime = mimeType;
                                         imageResult.image = imgT;
                                     } else {
-                                        imageResult = [self.compression compressImage:[imgT fixOrientation] withOptions:self.options];
+                                        imageResult = [self.compression compressImage:imgT withOptions:self.options];
+                                        imageResult.data = [self.exifService copyImagePropertiesFrom:imgT to:imageResult.data];
                                     }
                                     
                                     NSString *filePath = @"";
